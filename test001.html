@@ -11,13 +11,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 </head>
 <body>
+    <div id="container"></div>
     <script type="text/babel">
+        var destination = document.querySelector('#container');
         // ReactDOM.render 
         // 화면에 출력하고 싶은 HTML (즉, JSX)
         // 렌더링할 DOM 위치
         ReactDOM.render(
             <h1>SummerSnow</h1>,
-            document.body
+            destination
         );
     </script>
 </body>
