@@ -29,9 +29,21 @@
         // 화면에 출력하고 싶은 HTML (즉, JSX)
         // 렌더링할 DOM 위치
         ReactDOM.render(
-            <h1>SummerSnow</h1>,
+            <div>
+                <h3><i>Batman</i></h3>
+                <h3><i>Iron Man</i></h3>
+                <h3><i>Nicolas Cage</i></h3>
+                <h3><i>Mega Man</i></h3>
+            </div>,
             destination
         );
     </script>
 </body>
 </html>
+<!-- 
+    여러 개의 h1 태그를 렌더링하고자 할 때 div로 감싸는 이유는 jsx와 자바스크립트에서는
+    하나의 엘리먼트만 출력이 가능하기 때문이다.
+
+    h1 태그를 h3로 바꾸고, 다시 h3태그 안에 i 태그를 추가하면서 아직까지는 jsx와 자바스크립트를 활용해도
+    평상시와 차이가 없다는 것을 알 수 있었다.
+ -->
