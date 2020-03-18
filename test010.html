@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React! React! React!</title>
+    <!-- 리액트 로드 -->
+    <script crossorigin src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- 바벨 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var Colorizer = React.createClass({
+            getInitialState: function() {
+                return {
+                    color: '',
+                    bgColor: ''
+                };
+            },
+            colorValue: function(e) {
+                this.setState({
+                    color: e.target.value
+                });
+            },
+            setNewColor: function(e) {
+                this.setState({
+                    bgColor: this.state.color
+                });
+
+                this._input.value = "";
+                this._input.focus();
+
+                e.preventDefault();
+            },
+            render: function() {
+                var squareStyle = {
+                    width: 200,
+                    height: 200,
+                    backgroundColor: this.state.bgColor
+                };
+
+                return (
+                    <div className="colorArea">
+                        <div style={squareStyle} className="colorSquare"></div>
+
+                        <form onSubmit={this.setNewColor}>
+                            <input 
+                                ref = {
+                                    (el) => this._input = el
+                                }
+                                onChange={this.colorValue}
+                                placeholder="Enter a color value"
+                            />
+                            <button type="submit">go</button>
+                        </form>                        
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <div>
+                <Colorizer />
+            </div>,
+            document.querySelector('#container')
+        )
+    </script>
+</body>
+</html>
