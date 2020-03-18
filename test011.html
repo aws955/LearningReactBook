@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React! React! React!</title>
+    <!-- 리액트 로드 -->
+    <script crossorigin src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- 바벨 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <!-- 라우터 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+        var App = React.createClass({
+            render: function(){
+                return (
+                    <div>
+                        <h1>Simple SPA</h1>
+                        <ul className="header">
+                            <li>Home</li>
+                            <li>Stuff</li>
+                            <li>Contact</li>
+                        </ul>
+                        <div className="content">
+                        
+                        </div>
+                    </div>
+                );
+            }
+        });
+        
+        var destination = document.querySelector("#container");
+
+        ReactDOM.render(
+            <ReactRouter.Router>
+                <ReactRouter.Route path="/" component={App}>
+                
+                </ReactRouter.Route>
+            </ReactRouter.Router>,
+            destination
+        );
+    </script>
+</body>
+</html>
