@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기존 특정 DOM 조작 예제</title>
+    <style>
+        .success {
+            background-color: green;
+        }
+
+        .failure {
+            background-color: red;
+        }
+    </style>
+    <script>
+        function validate() {
+            var input = document.getElementById('password');
+            input.className - '';
+            if (input.value === '0000'){
+                input.className = 'success'
+            } else {
+                input.className = 'failure'
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="password" id="password" />
+    <button onclick="validate()">Validate</button>
+</body>
+</html>
