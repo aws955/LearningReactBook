@@ -13,25 +13,125 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js"></script>
 
     <style>
-
+        body {
+            background-color: #FFCC00;
+            padding: 20px;
+            margin: 0;
+        }
+        h1, h2, p, ul, li {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        ul.header li {
+            display: inline;
+            list-style-type: none;
+            margin: 0;
+        }
+        ul.header {
+            background-color: #111;
+            padding: 0;
+        }
+        ul.header li a {
+            color: #FFF;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 20px;
+            display: inline-block;
+        }
+        .content {
+            background-color: #FFF;
+            padding: 20px;
+        }
+        .content h2 {
+            padding: 0;
+            margin: 0;
+        }
+        .content li {
+            margin-bottom: 10px;
+        }
+        .active {
+            background-color: #0099FF;
+        }
     </style>
 </head>
 <body>
     <div id="container"></div>
 
     <script type="text/babel">
+        var { Router,
+              Route,
+              IndexRoute,
+              IndexLink,
+              Link } = ReactRouter;
+
+        var Home = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h2>HELLO</h2>
+                        <p>Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin.
+                            Neque convallis a cras semper auctor. Libero id faucibus nisl tincidunt eget. Leo a diam
+                            sollicitudin tempor id. A lacus vestibulum sed arcu non odio euismod lacinia. In tellus
+                            integer feugiat scelerisque. Feugiat in fermentum posuere urna nec tincidunt praesent.
+                            Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Nisi scelerisque eu
+                            ultrices vitae auctor eu augue ut lectus. Ipsum faucibus vitae aliquet nec ullamcorper sit
+                            amet risus. Et malesuada fames ac turpis egestas sed. Sit amet nisl suscipit adipiscing
+                            bibendum est ultricies. Arcu ac tortor dignissim convallis aenean et tortor at. Pretium
+                            viverra suspendisse potenti nullam ac tortor vitae purus. Eros donec ac odio tempor orci
+                            dapibus ultrices. Elementum nibh tellus molestie nunc. Et magnis dis parturient montes
+                            nascetur. Est placerat in egestas erat imperdiet. Consequat interdum varius sit amet mattis
+                            vulputate enim.</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Quis hendrerit dolor magna
+                            eget est lorem ipsum dolor sit.</p>
+                    </div>
+                );
+            }
+        });
+
+        var Contact = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h2>GOT QUESTIONS?</h2>
+                        <p>The easiest thing to do is post on
+                        our <a href="http://forum.kirupa.com">forums</a>.</p>
+                    </div>
+                )
+            }
+        });
+
+        var Stuff = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h2>STUFF</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                        <ol>
+                            <li>Lorem</li>
+                            <li>ipsum</li>
+                            <li>dolor</li>
+                            <li>sit</li>
+                            <li>amet</li>
+                        </ol>
+                    </div>
+                );
+            }
+        });
+
         var App = React.createClass({
             render: function(){
                 return (
                     <div>
                         <h1>Simple SPA</h1>
                         <ul className="header">
-                            <li>Home</li>
-                            <li>Stuff</li>
-                            <li>Contact</li>
+                            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+                            <li><Link to="/stuff" activeClassName="active">Stuff</Link></li>
+                            <li><Link to="/contact" activeClassName="active">Contact</Link></li>
                         </ul>
                         <div className="content">
-                        
+                            {this.props.children}
                         </div>
                     </div>
                 );
@@ -41,11 +141,13 @@
         var destination = document.querySelector("#container");
 
         ReactDOM.render(
-            <ReactRouter.Router>
-                <ReactRouter.Route path="/" component={App}>
-                
-                </ReactRouter.Route>
-            </ReactRouter.Router>,
+            <Router>
+                <Route path="/" component={App}>
+                    <IndexRoute component={Home}/>
+                    <Route path="stuff" component={Stuff}/>
+                    <Route path="contact" component={Contact}/>
+                </Route>
+            </Router>,
             destination
         );
     </script>
