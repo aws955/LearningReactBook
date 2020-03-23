@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import ValidationSample from './ValidationSample';
+import StyledButton from './components/StyledButton';
 
-class App extends Component{
-    render() {
+class App extends Component {
+    render () {
         return (
-            <ValidationSample/>
+            <div>
+                <StyledButton big>버튼</StyledButton>
+            </div>
         );
     }
 }
